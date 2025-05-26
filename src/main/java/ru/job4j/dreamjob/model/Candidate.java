@@ -53,8 +53,12 @@ public class Candidate {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Candidate candidate)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Candidate candidate)) {
+            return false;
+        }
         return getId() == candidate.getId() && Objects.equals(getName(), candidate.getName()) && Objects.equals(getDescription(), candidate.getDescription()) && Objects.equals(getCreationDate(), candidate.getCreationDate());
     }
 

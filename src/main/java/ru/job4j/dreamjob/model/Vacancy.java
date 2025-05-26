@@ -53,8 +53,12 @@ public class Vacancy {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Vacancy vacancy)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Vacancy vacancy)) {
+            return false;
+        }
         return getId() == vacancy.getId() && Objects.equals(getTitle(), vacancy.getTitle()) && Objects.equals(getDescription(), vacancy.getDescription()) && Objects.equals(getCreationTime(), vacancy.getCreationTime());
     }
 
