@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.model;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Vacancy {
@@ -7,9 +8,15 @@ public class Vacancy {
 
     private String title;
 
-    public Vacancy(int id, String title) {
+    private String description;
+
+    private LocalDateTime creationTime;
+
+    public Vacancy(int id, String title, String description, LocalDateTime creationTime) {
         this.id = id;
         this.title = title;
+        this.description = description;
+        this.creationTime = creationTime;
     }
 
     public int getId() {
@@ -28,20 +35,31 @@ public class Vacancy {
         this.title = title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(LocalDateTime creationTime) {
+        this.creationTime = creationTime;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Vacancy vacancy = (Vacancy) o;
-        return id == vacancy.id;
+        if (this == o) return true;
+        if (!(o instanceof Vacancy vacancy)) return false;
+        return getId() == vacancy.getId() && Objects.equals(getTitle(), vacancy.getTitle()) && Objects.equals(getDescription(), vacancy.getDescription()) && Objects.equals(getCreationTime(), vacancy.getCreationTime());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId(), getTitle(), getDescription(), getCreationTime());
     }
 }
