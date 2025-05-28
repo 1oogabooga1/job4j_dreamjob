@@ -13,7 +13,6 @@ public class VacancyController {
 
     private final VacancyRepository vacancyRepository = MemoryVacancyRepository.getInstance();
 
-
     @GetMapping("/create")
     public String getCreationPage() {
         return "vacancies/create";
