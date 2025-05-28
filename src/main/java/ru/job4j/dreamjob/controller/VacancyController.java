@@ -13,6 +13,12 @@ public class VacancyController {
 
     private final VacancyRepository vacancyRepository = MemoryVacancyRepository.getInstance();
 
+
+    @GetMapping("/create")
+    public String getCreationPage() {
+        return "vacancies/create";
+    }
+
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("vacancies", vacancyRepository.findAll());
