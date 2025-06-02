@@ -10,14 +10,15 @@ public class Vacancy {
 
     private String description;
 
-    private LocalDateTime creationTime;
+    private LocalDateTime creationTime = LocalDateTime.now();
 
-    public Vacancy(int id, String title, String description, LocalDateTime creationTime) {
+    public Vacancy(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.creationTime = creationTime;
     }
+
+    public Vacancy() {}
 
     public int getId() {
         return id;
