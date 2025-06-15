@@ -12,10 +12,13 @@ public class Vacancy {
 
     private LocalDateTime creationTime = LocalDateTime.now();
 
-    public Vacancy(int id, String title, String description) {
+    private boolean visible;
+
+    public Vacancy(int id, String title, String description, boolean visible) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.visible = visible;
     }
 
     public Vacancy() { }
@@ -66,5 +69,13 @@ public class Vacancy {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getTitle(), getDescription(), getCreationTime());
+    }
+
+    public boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 }
