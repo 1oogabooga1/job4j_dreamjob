@@ -4,9 +4,13 @@ import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import ru.job4j.dreamjob.dto.FileDto;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.service.CandidateService;
 import ru.job4j.dreamjob.service.CityService;
+
+import java.io.IOException;
 
 @ThreadSafe
 @Controller
@@ -35,9 +39,14 @@ public class CandidateController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Candidate candidate) {
-        candidateService.save(candidate);
-        return "redirect:/candidates";
+    public String create(@ModelAttribute Candidate candidate, @RequestParam MultipartFile file, Model model) {
+        try {
+            candidateService.save(candidate, new FileDto(file.getOriginalFilename(), file.getBytes()));
+            return "redirect:/candidates";
+        } catch (IOException e) {
+            model.addAttribute("message", e.getMessage());
+            return "errors/404";
+        }
     }
 
     @GetMapping("/{id}")
@@ -53,13 +62,18 @@ public class CandidateController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Candidate candidate, Model model) {
-        var isUpdated = candidateService.update(candidate);
-        if (!isUpdated) {
-            model.addAttribute("message", "Кандидат с указанным идентификатором не найдена");
+    public String update(@ModelAttribute Candidate candidate, @RequestParam MultipartFile file, Model model) {
+        try {
+            var isUpdated = candidateService.update(candidate, new FileDto(file.getOriginalFilename(), file.getBytes()));
+            if (!isUpdated) {
+                model.addAttribute("message", "Кандидат не найден");
+                return "errors/404";
+            }
+            return "redirect:/candidates";
+        } catch (IOException e) {
+            model.addAttribute("message", e.getMessage());
             return "errors/404";
         }
-        return "redirect:/candidates";
     }
 
     @GetMapping("/delete/{id}")
