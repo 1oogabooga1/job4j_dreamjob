@@ -1,16 +1,28 @@
 package ru.job4j.dreamjob.model;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Objects;
 
 public class Vacancy {
+
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "title", "title",
+            "description", "description",
+            "creation_date", "creationDate",
+            "visible", "visible",
+            "city_id", "cityId",
+            "file_id", "fileId"
+    );
+
     private int id;
 
     private String title;
 
     private String description;
 
-    private LocalDateTime creationTime = LocalDateTime.now();
+    private LocalDateTime creationDate = LocalDateTime.now();
 
     private boolean visible;
 
@@ -21,11 +33,11 @@ public class Vacancy {
     public Vacancy() {
     }
 
-    public Vacancy(int id, String title, String description, LocalDateTime creationTime, boolean visible, int cityId, int fileId) {
+    public Vacancy(int id, String title, String description, LocalDateTime creationDate, boolean visible, int cityId, int fileId) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.creationTime = creationTime;
+        this.creationDate = creationDate;
         this.visible = visible;
         this.cityId = cityId;
         this.fileId = fileId;
@@ -71,12 +83,12 @@ public class Vacancy {
         this.description = description;
     }
 
-    public LocalDateTime getCreationTime() {
-        return creationTime;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreationTime(LocalDateTime creationTime) {
-        this.creationTime = creationTime;
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     @Override
@@ -87,12 +99,12 @@ public class Vacancy {
         if (!(o instanceof Vacancy vacancy)) {
             return false;
         }
-        return getId() == vacancy.getId() && Objects.equals(getTitle(), vacancy.getTitle()) && Objects.equals(getDescription(), vacancy.getDescription()) && Objects.equals(getCreationTime(), vacancy.getCreationTime());
+        return getId() == vacancy.getId() && Objects.equals(getTitle(), vacancy.getTitle()) && Objects.equals(getDescription(), vacancy.getDescription()) && Objects.equals(getCreationDate(), vacancy.getCreationDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getDescription(), getCreationTime());
+        return Objects.hash(getId(), getTitle(), getDescription(), getCreationDate());
     }
 
     public boolean getVisible() {
