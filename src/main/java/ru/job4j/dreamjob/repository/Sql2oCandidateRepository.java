@@ -20,7 +20,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
     public Candidate save(Candidate candidate) {
         try (var connection = sql2o.open()) {
             var sql = """
-                    INSERT INTO candidates(name, description, creationDate, city_id, file_id) 
+                    INSERT INTO candidates(name, description, creation_date, city_id, file_id) 
                     VALUES (:name, :description, :creationDate, :cityId, :fileId) 
                     """;
             var query = connection.createQuery(sql, true)
@@ -50,7 +50,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
         try (var connection = sql2o.open()) {
             var sql = connection.createQuery("""
                     UPDATE candidates
-                    SET name = :name, description = :description, creationDate = :creationDate,
+                    SET name = :name, description = :description, creation_date = :creationDate,
                     city_id = :cityId, file_id = :fileId
                     WHERE id = :id 
                     """)
