@@ -1,13 +1,19 @@
-# Job4j Dream Job 
+# Job4j Dream Job
 
 ## Overview
 In this project I realized a system for searching job and workers. I made possible creation vacancies, candidates and an autherization system. 
+
+---
+
 ## Technologies stack
 - **Java 17, Spring Boot**
 - **Thymeleaf, Bootstrap**
 - **PostgreSQL, SQl2o, H2, Liquibase**
 - **Maven, GitHub Actions**
 - **JUnit 5, Mock testing**
+
+---
+
 ## Extended Description
 - Main - General information about the project
 - Vacancies - list of vacancies. Click on the name redirects the user to the edit page, where it is possible to:
@@ -55,6 +61,9 @@ In this project I realized a system for searching job and workers. I made possib
   - Linked text, that suggest user to register if he is still not.
   - Button Login
   - Button Cancel
+    
+---
+
 ## How to run 
 #### 1. Clone repository:
 ```bash
@@ -78,6 +87,9 @@ java -jar target/job4j_cinema.jar
 ```bash
 http://localhost:8080/
 ```
+
+---
+
 ## Links
 | Page   | Link   |
 |--------|--------|
@@ -88,6 +100,9 @@ http://localhost:8080/
 | Resume creation | http://localhost:8080/candidates/create |
 | Register | http://localhost:8080/users/register |
 | Login | http://localhost:8080/users/login |
+
+---
+
 ## Screenshots
 <img width="1440" height="865" alt="image" src="https://github.com/user-attachments/assets/855dca0f-2c98-4f7a-9706-fe0af3ab2831" />
 <img width="1433" height="863" alt="image" src="https://github.com/user-attachments/assets/319e87e3-4dc1-43a6-954a-14a0881c97e1" />
